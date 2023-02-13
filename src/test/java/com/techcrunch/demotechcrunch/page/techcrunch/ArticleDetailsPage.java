@@ -23,8 +23,6 @@ public class ArticleDetailsPage extends BasePage {
     @FindBy(xpath = "//a[@class='post-block__title__link']")
     private List<WebElement> articleLinksHrefList;
 
-
-
     private String pageTitleSuffix = " | TechCrunch";
 
     public ArticleDetailsPage(WebDriver driver) {
@@ -74,7 +72,7 @@ public class ArticleDetailsPage extends BasePage {
         return getPageTitle();
     }
 
-    @Step("Get article title text")
+    @Step("Get article title text with | TechCrunch suffix ")
     public String getArticleTitleText(){
         return getText(articleTitleElement).concat(pageTitleSuffix);
     }

@@ -20,7 +20,7 @@ public class NewsTest extends BaseTest {
 
     @Test(priority = 0)
     @Description("Checking latest news: Each news has an author - Each news has an image")
-    public void latestNewsTest() throws InterruptedException {
+    public void latestNewsTest(){
         mainPage = new MainPage(driver);
         mainPage.getMainPage();
 

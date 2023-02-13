@@ -36,7 +36,7 @@ public class MainPage extends BasePage {
     }
 
 
-    public void printArticleAuthors() throws InterruptedException {
+    public void printArticleAuthors(){
 
         System.out.println("Size of list: " + authorList.size());
 
