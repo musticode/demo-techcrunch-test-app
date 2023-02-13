@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainPage extends BasePage {
@@ -62,11 +63,12 @@ public class MainPage extends BasePage {
     @Step("Checking for images")
     public boolean imageVerify(){
 
-        for (int i = 0; i < articleList.size(); i++){
-            if (!imageList.get(i).isEnabled()){
+        for (int i = 0; i < articleList.size(); i++) {
+            if (!isElementDisplayed(imageList.get(i))){
                 return false;
             }
         }
+
 
         return true;
     }
