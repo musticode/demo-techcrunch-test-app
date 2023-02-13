@@ -53,7 +53,7 @@ public class NewsTest extends BaseTest {
         Assert.assertEquals(
                 articleDetailsPage.linksValid(),
                 true,
-                "links are not valid");
+                "lin+ks are not valid");
 
 
         articleDetailsPage.getaaaa();

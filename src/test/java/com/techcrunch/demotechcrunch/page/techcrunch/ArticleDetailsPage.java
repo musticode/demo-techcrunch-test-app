@@ -2,6 +2,7 @@ package com.techcrunch.demotechcrunch.page.techcrunch;
 
 import com.techcrunch.demotechcrunch.api.ApiRequestService;
 import com.techcrunch.demotechcrunch.page.BasePage;
+import io.opentelemetry.api.trace.StatusCode;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
