@@ -4,6 +4,7 @@ import com.techcrunch.demotechcrunch.listener.TestListener;
 import com.techcrunch.demotechcrunch.page.techcrunch.ArticleDetailsPage;
 import com.techcrunch.demotechcrunch.page.techcrunch.MainPage;
 import com.techcrunch.demotechcrunch.test.BaseTest;
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -15,12 +16,15 @@ public class NewsTest extends BaseTest {
     MainPage mainPage;
     ArticleDetailsPage articleDetailsPage;
 
-    @Test
+
+
+    @Test(priority = 0)
+    @Description("Checking latest news: Each news has an author - Each news has an image")
     public void latestNewsTest() throws InterruptedException {
         mainPage = new MainPage(driver);
         mainPage.getMainPage();
 
-        mainPage.goToArticleDetail();
+        mainPage.printArticleAuthors();
 
         Assert.assertEquals(
                 mainPage.authorIsNotNull(),
@@ -35,7 +39,8 @@ public class NewsTest extends BaseTest {
 
 
 
-    @Test
+    @Test(priority = 1)
+    @Description("Checking article details: Browser title is the same with the news title - Links within the news content")
     public void checkArticleDetailsTest(){
 
         mainPage = new MainPage(driver);
@@ -56,7 +61,7 @@ public class NewsTest extends BaseTest {
                 "lin+ks are not valid");
 
 
-        articleDetailsPage.getaaaa();
+        articleDetailsPage.getLinks();
 
     }
 

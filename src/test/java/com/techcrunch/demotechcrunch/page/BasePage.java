@@ -41,12 +41,6 @@ public class BasePage {
     }
 
 
-    public List<WebElement> findElements(By locator){
-
-        List<WebElement> elementList = driver.findElements(locator);
-
-        return elementList;
-    }
 
     public boolean isElementDisplayed(WebElement element){
         waitFor(element);

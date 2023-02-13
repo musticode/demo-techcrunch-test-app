@@ -1,11 +1,11 @@
 package com.techcrunch.demotechcrunch.page.techcrunch;
 
 import com.techcrunch.demotechcrunch.page.BasePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainPage extends BasePage {
@@ -36,28 +36,22 @@ public class MainPage extends BasePage {
     }
 
 
-    public void goToArticleDetail() throws InterruptedException {
-        scrollDownByValue(600);
-        scrollDownByValue(600);
-        scrollDownByValue(600);
+    public void printArticleAuthors() throws InterruptedException {
 
-        Thread.sleep(2000);
-        //click(articleList.get(0));
-        System.out.println("size of list: " + articleList.size());
+        System.out.println("Size of list: " + authorList.size());
 
-        for (int i = 0; i < articleList.size(); i++) {
-            //System.out.println(articleList.get(i).getText());
-            System.out.println("Author: " + authorList.get(i).getText());
+
+        for (int i = 0; i < authorList.size(); i++) {
+            System.out.println("Author: " + getText(authorList.get(i)));
         }
 
-        //click(articleList.get(0));
-        //Thread.sleep(20000);
     }
 
+    @Step("Checking for authors")
     public boolean authorIsNotNull(){
 
         for (int i = 0; i < articleList.size(); i++) {
-            if (authorList.get(i).getText().isEmpty()){
+            if (getText(articleList.get(i)).isEmpty()){
                 return false;
             }
         }
@@ -65,6 +59,7 @@ public class MainPage extends BasePage {
         return true;
     }
 
+    @Step("Checking for images")
     public boolean imageVerify(){
 
         for (int i = 0; i < articleList.size(); i++){
@@ -76,6 +71,7 @@ public class MainPage extends BasePage {
         return true;
     }
 
+    @Step("Navigating Article Details page via clicking an article")
     public void getArticleDetailsPage(){
         click(articleList.get(0));
     }

@@ -3,6 +3,7 @@ package com.techcrunch.demotechcrunch.page.techcrunch;
 import com.techcrunch.demotechcrunch.api.ApiRequestService;
 import com.techcrunch.demotechcrunch.page.BasePage;
 import io.opentelemetry.api.trace.StatusCode;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,7 +31,7 @@ public class ArticleDetailsPage extends BasePage {
         super(driver);
     }
 
-    public void getaaaa(){
+    public void getLinks(){
         for (int i = 0; i < articleLinksHrefList.size(); i++) {
 
             System.out.println(articleLinksHrefList.get(i).getAttribute("href"));
@@ -38,6 +39,7 @@ public class ArticleDetailsPage extends BasePage {
     }
 
 
+    @Step("Checking for links")
     public boolean linksValid(){
 
         Iterator<WebElement> it = articleLinksHrefList.iterator();
@@ -57,7 +59,7 @@ public class ArticleDetailsPage extends BasePage {
 
             int responseCode = ApiRequestService.getInstance().sendRequestToElementLinks(articleLink);
 
-            //Assert.assertEquals(responseCode, 200, "Broken");
+
             if (responseCode > 200){
                 return false;
             }
@@ -67,10 +69,12 @@ public class ArticleDetailsPage extends BasePage {
     }
 
 
+    @Step("Get article details page title")
     public String getArticleDetailsPageTitle(){
         return getPageTitle();
     }
 
+    @Step("Get article title text")
     public String getArticleTitleText(){
         return getText(articleTitleElement).concat(pageTitleSuffix);
     }
