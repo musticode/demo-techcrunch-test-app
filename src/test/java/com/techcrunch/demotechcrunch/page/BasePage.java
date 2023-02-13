@@ -1,6 +1,5 @@
 package com.techcrunch.demotechcrunch.page;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,7 +8,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
 
 public class BasePage {
 
@@ -25,9 +23,7 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    private void waitFor(WebElement element){
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-    }
+
 
     public void click(WebElement element){
         waitFor(element);
@@ -69,6 +65,9 @@ public class BasePage {
         js.executeScript(script);
     }
 
+    private void waitFor(WebElement element){
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
 
 
 

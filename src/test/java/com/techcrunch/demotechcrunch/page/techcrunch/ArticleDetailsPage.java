@@ -2,12 +2,11 @@ package com.techcrunch.demotechcrunch.page.techcrunch;
 
 import com.techcrunch.demotechcrunch.api.ApiRequestService;
 import com.techcrunch.demotechcrunch.page.BasePage;
-import io.opentelemetry.api.trace.StatusCode;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
+
 
 import java.util.Iterator;
 import java.util.List;
@@ -16,9 +15,6 @@ public class ArticleDetailsPage extends BasePage {
 
     @FindBy(xpath = "//h1[@class='article__title']")
     private WebElement articleTitleElement;
-
-    @FindBy(xpath = "//article[@class='post-block post-block--image post-block--unread']")
-    private List<WebElement> articleLinksList;
 
     @FindBy(xpath = "//a[@class='post-block__title__link']")
     private List<WebElement> articleLinksHrefList;
@@ -29,7 +25,8 @@ public class ArticleDetailsPage extends BasePage {
         super(driver);
     }
 
-    public void getLinks(){
+    public void printLinks(){
+
         for (int i = 0; i < articleLinksHrefList.size(); i++) {
 
             System.out.println(articleLinksHrefList.get(i).getAttribute("href"));
@@ -42,7 +39,7 @@ public class ArticleDetailsPage extends BasePage {
 
         Iterator<WebElement> it = articleLinksHrefList.iterator();
 
-        System.out.println("Size of articlet list link: "+ articleLinksHrefList.size());
+        System.out.println("Size of article list link: "+ articleLinksHrefList.size());
 
         while(it.hasNext()) {
 
@@ -56,7 +53,6 @@ public class ArticleDetailsPage extends BasePage {
             }
 
             int responseCode = ApiRequestService.getInstance().sendRequestToElementLinks(articleLink);
-
 
             if (responseCode > 200){
                 return false;

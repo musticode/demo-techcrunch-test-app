@@ -61,7 +61,7 @@ public class NewsTest extends BaseTest {
                 "lin+ks are not valid");
 
 
-        articleDetailsPage.getLinks();
+        articleDetailsPage.printLinks();
 
     }
 
