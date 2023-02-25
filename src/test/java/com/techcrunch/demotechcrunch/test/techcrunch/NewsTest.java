@@ -1,7 +1,9 @@
 package com.techcrunch.demotechcrunch.test.techcrunch;
 
 import com.techcrunch.demotechcrunch.listener.TestListener;
+import com.techcrunch.demotechcrunch.page.techcrunch.AbsPage;
 import com.techcrunch.demotechcrunch.page.techcrunch.ArticleDetailsPage;
+import com.techcrunch.demotechcrunch.page.techcrunch.Base;
 import com.techcrunch.demotechcrunch.page.techcrunch.MainPage;
 import com.techcrunch.demotechcrunch.test.BaseTest;
 import io.qameta.allure.Description;
@@ -63,6 +65,19 @@ public class NewsTest extends BaseTest {
 
         articleDetailsPage.printLinks();
 
+    }
+
+
+    Base absPage;
+    Base abs2;
+    @Test
+    public void test() throws InterruptedException {
+        absPage = new AbsPage(driver);
+        abs2 = new AbsPage(driver);
+
+        absPage.getPage("https://classroom.google.com/c/NTc5Nzc0NzEyOTcy/a/NTg3MTg4MTIwNDg2/details");
+        Thread.sleep(3000);
+        abs2.getPage("https://www.youtube.com/");
     }
 
 

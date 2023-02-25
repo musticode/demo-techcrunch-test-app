@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class MainPage extends BasePage {
+public class MainPage extends BasePage implements Page{
 
     private static String TECH_CRUNCH_MAIN_URL = "https://techcrunch.com/";
 
@@ -77,4 +77,8 @@ public class MainPage extends BasePage {
         click(articleList.get(0));
     }
 
+    @Override
+    public boolean isAt() {
+        return isElementDisplayed(articleList.get(0));
+    }
 }

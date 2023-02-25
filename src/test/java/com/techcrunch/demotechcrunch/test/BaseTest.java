@@ -3,6 +3,8 @@ package com.techcrunch.demotechcrunch.test;
 
 
 import com.techcrunch.demotechcrunch.driver.DriverManager;
+import com.techcrunch.demotechcrunch.page.techcrunch.ArticleDetailsPage;
+import com.techcrunch.demotechcrunch.page.techcrunch.MainPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
@@ -11,6 +13,10 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 public class BaseTest extends DriverManager {
+
+    MainPage mainPage2;
+    ArticleDetailsPage articleDetailsPage2;
+
 
     @BeforeTest
     @Parameters(value = {"browserName"} )
@@ -27,6 +33,12 @@ public class BaseTest extends DriverManager {
             setDriver(browserName);
 
         }
+
+        mainPage2 = new MainPage(driver);
+        articleDetailsPage2 = new ArticleDetailsPage(driver);
+
+
+
 
     }
 
