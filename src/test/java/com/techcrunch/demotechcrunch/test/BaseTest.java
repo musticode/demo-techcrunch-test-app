@@ -14,9 +14,6 @@ import org.testng.annotations.Parameters;
 
 public class BaseTest extends DriverManager {
 
-    MainPage mainPage2;
-    ArticleDetailsPage articleDetailsPage2;
-
 
     @BeforeTest
     @Parameters(value = {"browserName"} )
@@ -33,11 +30,6 @@ public class BaseTest extends DriverManager {
             setDriver(browserName);
 
         }
-
-        mainPage2 = new MainPage(driver);
-        articleDetailsPage2 = new ArticleDetailsPage(driver);
-
-
 
 
     }

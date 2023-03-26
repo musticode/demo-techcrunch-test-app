@@ -4,6 +4,7 @@ package com.techcrunch.demotechcrunch.listener;
 
 import com.techcrunch.demotechcrunch.driver.DriverManager;
 import io.qameta.allure.Attachment;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -18,24 +19,36 @@ public class TestListener extends DriverManager implements ITestListener {
      *
      */
 
+    private static Logger logger = Logger.getLogger(TestListener.class);
+
+
     @Override
     public void onTestStart(ITestResult result) {
-        System.out.println("Test started: " + result.getName());
+
+        logger.info("Test Started: "+ result.getName() );
+//        System.out.println("Test started: " + result.getName());
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        System.out.println("Success: " + result.getName());
+        logger.info("Success: "+ result.getName());
+//        System.out.println("Success: " + result.getName());
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-        System.out.println("Failure on test: " + result.getName());
+        logger.warn("Failure: "+ result.getName());
+        logger.info(saveTextLog(result.getName()));
+        saveTextLog(result.getName());
+//        saveScreenshotPNG(driver);
+
+//        System.out.println("Failure on test: " + result.getName());
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        System.out.println("Test skipped: " + result.getName());
+        logger.info("Test skipped: "+ result.getName());
+//        System.out.println("Test skipped: " + result.getName());
     }
 
     @Override

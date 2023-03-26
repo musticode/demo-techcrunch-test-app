@@ -1,12 +1,14 @@
 package com.techcrunch.demotechcrunch.test.techcrunch;
 
 import com.techcrunch.demotechcrunch.listener.TestListener;
+import com.techcrunch.demotechcrunch.log.Log;
 import com.techcrunch.demotechcrunch.page.techcrunch.AbsPage;
 import com.techcrunch.demotechcrunch.page.techcrunch.ArticleDetailsPage;
 import com.techcrunch.demotechcrunch.page.techcrunch.Base;
 import com.techcrunch.demotechcrunch.page.techcrunch.MainPage;
 import com.techcrunch.demotechcrunch.test.BaseTest;
 import io.qameta.allure.Description;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -68,16 +70,25 @@ public class NewsTest extends BaseTest {
     }
 
 
+//    private static Logger logger = Logger.getLogger(NewsTest.class);
+
     Base absPage;
     Base abs2;
+
+
     @Test
     public void test() throws InterruptedException {
         absPage = new AbsPage(driver);
         abs2 = new AbsPage(driver);
 
+        Log.info("aaaaa");
         absPage.getPage("https://classroom.google.com/c/NTc5Nzc0NzEyOTcy/a/NTg3MTg4MTIwNDg2/details");
+        Log.info("bbbbbbbbb");
+
         Thread.sleep(3000);
         abs2.getPage("https://www.youtube.com/");
+        Assert.assertEquals("aaaa", false, "aasadsda");
+        Log.info("ccascxacac");
     }
 
 

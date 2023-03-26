@@ -8,12 +8,18 @@ public class AbsPage extends Base{
 
     @FindBy(xpath = "aaaa")
     private WebElement el;
+
+    @FindBy(xpath = "aa")
+    private WebElement testNAme;
+
+
     public AbsPage(WebDriver driver) {
         super(driver);
     }
 
     @Override
     public boolean isAt() {
+
         return el.isDisplayed();
     }
 }

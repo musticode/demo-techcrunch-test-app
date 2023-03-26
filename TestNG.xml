@@ -2,12 +2,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Tech Crunch Demo Test Suite">
-    <test name="Tech Crunch Test">
+    <test name="Tech Crunch Test" parallel="classes" thread-count="4">
 
         <parameter name="browserName" value="chrome"/>
 
         <classes>
-            <class name="com.techcrunch.demotechcrunch.test.techcrunch.NewsTest"/>
+            <class name="com.techcrunch.demotechcrunch.test.techcrunch.ParallelTests"/>
+            <class name="com.techcrunch.demotechcrunch.test.techcrunch.Parallel2Test"/>
         </classes>
     </test>
 

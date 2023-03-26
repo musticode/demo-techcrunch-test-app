@@ -1,15 +1,17 @@
 package com.techcrunch.demotechcrunch.page.techcrunch;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import com.techcrunch.demotechcrunch.exception.NoElementException;
+import com.techcrunch.demotechcrunch.exception.TimeOutException;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public abstract class Base implements Page {
+public class Base implements Page {
 
     private WebDriver driver;
     private WebDriverWait wait;
@@ -25,13 +27,26 @@ public abstract class Base implements Page {
 
     public void click(WebElement element){
         waitFor(element);
-        element.click();
+
+        try {
+            element.click();
+        }catch (NoElementException e){
+            System.out.println(e.getMessage());
+        }
+        //element.click();
     }
+
 
     public void setText(WebElement element, String text){
         waitFor(element);
-        element.clear();
-        element.sendKeys(text);
+
+        try {
+            element.clear();
+            element.sendKeys(text);
+        }catch (NoElementException e ){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     public void getPage(String url){
@@ -40,8 +55,18 @@ public abstract class Base implements Page {
 
 
     private void waitFor(WebElement element){
-        wait.until(ExpectedConditions.elementToBeClickable(element));
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+        }catch (TimeOutException e){
+            e.getMessage();
+        }
+
     }
 
 
+
+    @Override
+    public boolean isAt() {
+        return false;
+    }
 }
